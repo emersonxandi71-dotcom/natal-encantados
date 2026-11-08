@@ -116,7 +116,7 @@
     if (cep.value.replace(/\D/g, '').length !== 8) {
       cep.classList.add('invalid'); error.textContent = 'Informe um CEP válido com 8 números.'; cep.focus(); return;
     }
-    if (!Number.isInteger(qty) || qty < 1 || qty > 99) {
+    if (!/^[0-9]{11}$/.test(form.elements.cpf.value.replace(/\\D/g, ''))) {\n      form.elements.cpf.classList.add('invalid'); error.textContent = 'Informe um CPF com 11 números.'; form.elements.cpf.focus(); return;\n    }\n    if (!form.elements.email.checkValidity()) {\n      form.elements.email.classList.add('invalid'); error.textContent = 'Informe um e-mail válido.'; form.elements.email.focus(); return;\n    }\n    if (!Number.isInteger(qty) || qty < 1 || qty > 99) {
       form.elements.quantity.classList.add('invalid'); error.textContent = 'Escolha uma quantidade entre 1 e 99 árvores.'; form.elements.quantity.focus(); return;
     }
     updateSummary();
