@@ -1,6 +1,6 @@
 # NATAL ENCANTADO
 
-Loja estática responsiva para apresentar a Árvore de Natal Especial por **R$ 69,99**, com pisca-pisca grátis por unidade.
+Loja responsiva da NATAL ENCANTADO para apresentar a Árvore de Natal Especial por **R$ 69,99**, com pisca-pisca grátis e frete grátis conforme a oferta informada.
 
 ## Executar localmente
 
@@ -20,7 +20,7 @@ No início de `app.js`, preencha `WHATSAPP_NUMBER` com o número oficial no form
 
 O carrinho e seu resumo usam `localStorage` no próprio navegador. O formulário valida os campos e demonstra o resumo, mas **não envia dados a um servidor, não cria pedido e não confirma pagamento**. A mensagem exibida é: “Pagamento via PIX em configuração. Entre em contato com nosso atendimento para mais informações.”
 
-Para lançar pagamentos, implemente backend seguro e integração oficial com Mercado Pago ou Asaas. Crie e valide pedidos e valores no servidor, nunca confie em valores enviados pelo navegador, valide a assinatura/autenticidade do webhook do gateway e só então atualize o status do pagamento. Não gere PIX fictício nem marque o pedido como pago pelo frontend.
+## Integração Cakto pendente\n\nA interface ainda não está integrada à API Pix. A Cakto documenta `POST https://api.cakto.com.br/public_api/payments/`, autenticação Bearer, `X-Idempotency-Key`, uma oferta ativa (`offerId`) e dados do cliente. A conta precisa ter Cakto Banking ativa, principal e com abertura concluída. A resposta fornece `pix.qrCode` (copia e cola) e expiração; a aplicação deve gerar a imagem do QR Code a partir desse código. A confirmação deve vir do webhook `purchase_approved`, com validação da origem e processamento idempotente.\n\nAntes de implementar a cobrança real, configure no backend o token de acesso e o ID da oferta ativa, confirme o valor configurado na oferta e implemente webhook com validação conforme a documentação. Nunca exponha credenciais no navegador. O link de checkout hospedado informado pelo proprietário não substitui a API.\n\nDocumentação oficial: https://www.cakto.com.br/api-pix e https://docs.cakto.com.br/\n\nNão gere PIX fictício nem marque o pedido como pago pelo frontend.
 
 ## Conteúdo e imagens
 
